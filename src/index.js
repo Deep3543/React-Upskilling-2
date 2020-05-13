@@ -9,6 +9,13 @@ let playData = {
 }
 
 class PlayGameCounter extends Component{
+  getPercent = decimal => {
+    return decimal * 100 + '%'
+  }
+  calcGoalPrograss = (total, goal) => {
+    return this.getPercent(total/goal)
+  }
+
   render() {
     const {total, training, erangle, goal} = this.props
     return (
@@ -23,7 +30,7 @@ class PlayGameCounter extends Component{
           <p>Erangle Days: {erangle}</p>
         </div>
         <div>
-          <p>Goal: {goal}</p>
+          <p>Goal Progress: {this.calcGoalPrograss(total, goal)}</p>
         </div>
       </section>
     )
