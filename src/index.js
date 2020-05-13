@@ -1,20 +1,41 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React, {Component} from 'react'
+import {render} from 'react-dom'
 
-class Message extends React.Component{
+let playData = {
+  total: 50,
+  training: 20,
+  erangle: 10,
+  goal: 100
+}
+
+class PlayGameCounter extends Component{
   render() {
+    const {total, training, erangle, goal} = this.props
     return (
-      <div>
-        <h1 style={{color:this.props.color}}>
-          {this.props.msg}
-        </h1>
-    <p>I'll check back in {this.props.minutes} minutes.</p>
-      </div>
+      <section>
+        <div>
+          <p>Total Days: {total}</p>
+        </div>
+        <div>
+          <p>Training Days: {training}</p>
+        </div>
+        <div>
+          <p>Erangle Days: {erangle}</p>
+        </div>
+        <div>
+          <p>Goal: {goal}</p>
+        </div>
+      </section>
     )
   }
 }
 
-ReactDOM.render(
-  <Message color="blue" msg="How are you?" minutes={5}/>, 
+render(
+  <PlayGameCounter
+    total={playData.total}
+    training={playData.training}
+    erangle={playData.erangle}
+    goal={playData.goal}
+  />,
   document.getElementById('root')
 )
